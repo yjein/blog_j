@@ -12,6 +12,7 @@ import { BlogModule } from './blog/blog.module';
       database: 'blog',
       entities: [Blog],
       synchronize: true,
+      useUnifiedTopology: true,
     }),
     BlogModule,
   ],
