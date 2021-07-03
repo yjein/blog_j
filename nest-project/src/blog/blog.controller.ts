@@ -9,6 +9,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { BlogService } from './blog.service';
+import { CreateBlogDto } from './dto/create-blog.dto';
+import { UpdateBlogDto } from './dto/update-blog.dto';
 import { Blog } from './entities/blog.entity';
 
 @Controller('blog')
@@ -17,34 +19,36 @@ export class BlogController {
 
   @Get()
   findAll(): Promise<Blog[]> {
-    return this.blogService.findAll();
+    const blog = this.blogService.findAll();
+
+    return blog;
   }
 
-  // @Get('search')
-  // search(@Query('title') searchingTitle: string) {
-  //   return `We are searching for a blog with a title: ${searchingTitle}`;
-  // }
-
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Blog> {
-    return this.blogService.findOne(id);
+  async findOne(@Param('id') _id: string): Promise<Blog> {
+    const blog = this.blogService.findOne(_id);
+
+    return blog;
   }
 
   @Post()
-  create(@Body() createData) {
-    return this.blogService.create(createData);
-  }
+  create(@Body() createBlogDto: CreateBlogDto) {
+    const blog = this.blogService.create(createBlogDto);
 
-  @Patch(':id')
-  patch(@Param('id') id: string, @Body() updateData) {
-    return {
-      updatedBlog: id,
-      ...updateData,
-    };
+    return blog;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.blogService.deleteOne(id);
+  async remove(@Param('id') _id: string) {
+    const blog = await this.blogService.deleteOne(_id);
+
+    return blog;
+  }
+
+  @Patch(':id')
+  async patch(@Param('id') _id: string, @Body() updateBlogDto: UpdateBlogDto) {
+    const blog = await this.blogService.update(_id, updateBlogDto);
+
+    return blog;
   }
 }
