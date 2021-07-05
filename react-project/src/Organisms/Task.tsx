@@ -39,9 +39,10 @@ const Task: React.FC<Props> = (props) => {
       >
         Post
       </button>
-      {tasks.map((data) => {
+      {tasks.map((data, idx) => {
         return (
           <Wrap
+            key={idx}
             onClick={() => {
               setPageStatus("read");
               setBlogData(data);
