@@ -1,3 +1,5 @@
+import { Blog } from "../Pages/App";
+
 export const findAll = async () => {
   const resp = await fetch('http://localhost:5000/blog')
     .then((data) => data.json())
@@ -6,7 +8,7 @@ export const findAll = async () => {
   return resp;
 };
 
-export const createOne = async (data: {}) => {
+export const createOne = async (data: Blog) => {
   await fetch('http://localhost:5000/blog', {
     method: 'post',
     headers: {
