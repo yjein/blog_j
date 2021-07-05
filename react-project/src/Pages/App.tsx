@@ -7,7 +7,7 @@ import Create from "../Organisms/Create";
 
 const Wrap = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
 const H1 = styled.h1`
