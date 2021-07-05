@@ -23,16 +23,28 @@ const Div = styled.div`
 interface Props {
   data: Blog;
   setPageStatus: React.Dispatch<React.SetStateAction<BlogPageType>>;
+  deleteBlog: (data: Blog) => void;
 }
 
 const Read: React.FC<Props> = (props) => {
-  const { data, setPageStatus } = props;
+  const { data, setPageStatus, deleteBlog } = props;
 
   return (
     <>
       <button onClick={() => setPageStatus("main")}>Back</button>
 
       <Wrap>
+        <div>
+          <button onClick={() => {}}>Modify</button>
+          <button
+            onClick={() => {
+              deleteBlog(data);
+            }}
+          >
+            Delete
+          </button>
+        </div>
+
         <H1>{data.title}</H1>
         <Div>{data.contents}</Div>
       </Wrap>
