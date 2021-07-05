@@ -9,8 +9,8 @@ const Wrap = styled.div`
 `;
 
 const H1 = styled.h1`
-  /* margin: auto 0; */
-  padding: 0;
+  margin: 0 0 2.5rem;
+  font-size: 4rem;
 `;
 
 const Div = styled.div`
