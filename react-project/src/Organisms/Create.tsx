@@ -44,7 +44,7 @@ const Textarea = styled.textarea`
 
 interface Props {
   setPageStatus: React.Dispatch<React.SetStateAction<BlogPageType>>;
-  createBlog: (data: Blog) => Promise<void>;
+  createBlog: (data: Blog) => void;
 }
 
 const Create: React.FC<Props> = (props) => {
