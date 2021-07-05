@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { findAll, create } from "../api/blog.api";
 import Task from "../Organisms/Task";
 import Read from "../Organisms/Read";
+import Create from "../Organisms/Create";
 
 const Wrap = styled.div`
   width: 100%;
@@ -18,29 +19,29 @@ export interface Blog {
 
 const App = () => {
   const [tasks, setTasks] = useState<Blog[]>([]);
-  // const [blogData, setBlogData] = useState<Blog>();
+  const [blogData, setBlogData] = useState<Blog>();
   const [pageStatus, setPageStatus] = useState<BlogPageType>("main");
   // const [loading, setLoading] = useState<Boolean>(true);
 
   const createBlog = async (data: Blog) => {
-    const blogData = {
+    const createData = {
       title: data.title,
       contents: data.contents,
     };
 
-    create(blogData);
+    create(createData);
   };
 
   const blogStatus = () => {
     switch (pageStatus) {
-      // case "read":
-      //   if (!blogData) return;
-      //   return <Read data={blogData} setPageStatus={setPageStatus} />;
+      case "read":
+        if (!blogData) return;
+        return <Read data={blogData} setPageStatus={setPageStatus} />;
 
-      // case "create":
-      //   return (
-
-      //   );
+      case "create":
+        return (
+          <Create />
+        );
 
       case "modify":
         return <div>수정페이지</div>;
