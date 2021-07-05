@@ -5,9 +5,10 @@ import { Blog, BlogPageType } from "../Pages/App";
 const Wrap = styled.div`
   margin: 1rem 0;
   padding: 1rem;
+  background-color: #ffffff;
   border: 1px solid none;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 6px 1px #c0bfbf;
+  box-shadow: 1px 1px 6px 1px #e5e7e9;
   cursor: pointer;
 `;
 

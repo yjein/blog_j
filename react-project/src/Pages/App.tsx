@@ -8,6 +8,7 @@ import Create from "../Organisms/Create";
 const Wrap = styled.div`
   width: 100%;
   height: 100%;
+  background-color: #f1f4f7;
 `;
 
 const H1 = styled.h1`

@@ -6,6 +6,7 @@ const Wrap = styled.div`
   margin: 1rem 3rem;
   padding: 1rem;
   height: 70vh;
+  background-color: #ffffff;
 `;
 
 const H1 = styled.h1`
