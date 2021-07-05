@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Blog, BlogPageType } from "../Pages/App";
 
 const Wrap = styled.div`
-  margin: 1rem 3rem;
+  margin: 1rem 5rem;
   padding: 1rem;
   height: 70vh;
   background-color: #ffffff;
