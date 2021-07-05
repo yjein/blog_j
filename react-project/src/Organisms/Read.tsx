@@ -32,7 +32,7 @@ const Read: React.FC<Props> = (props) => {
       <button onClick={() => setPageStatus("main")}>Back</button>
 
       <Wrap>
-        <H1>{data.contents}</H1>
+        <H1>{data.title}</H1>
         <Div>{data.contents}</Div>
       </Wrap>
     </>

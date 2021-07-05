@@ -48,7 +48,7 @@ const Task: React.FC<Props> = (props) => {
               setBlogData(data);
             }}
           >
-            <H2>{data.contents}</H2>
+            <H2>{data.title}</H2>
             <Div>{data.contents}</Div>
           </Wrap>
         );
