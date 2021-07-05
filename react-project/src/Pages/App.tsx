@@ -19,7 +19,7 @@ export interface Blog {
 
 const App = () => {
   const [tasks, setTasks] = useState<Blog[]>([]);
-  const [blogData, setBlogData] = useState<Blog>();
+  const [blogData, setBlogData] = useState<Blog>({ title: "", contents: "" });
   const [pageStatus, setPageStatus] = useState<BlogPageType>("main");
   // const [loading, setLoading] = useState<Boolean>(true);
 
@@ -39,16 +39,14 @@ const App = () => {
         return <Read data={blogData} setPageStatus={setPageStatus} />;
 
       case "create":
-        return (
-          <Create />
-        );
+        return <Create setPageStatus={setPageStatus} createBlog={createBlog} />;
 
       case "modify":
         return <div>수정페이지</div>;
 
       case "main":
       default: {
-        return <Task tasks={tasks} setPageStatus={setPageStatus} />;
+        return <Task tasks={tasks} setPageStatus={setPageStatus} setBlogData={setBlogData} />;
       }
     }
   };

@@ -24,10 +24,11 @@ const Div = styled.div`
 interface Props {
   tasks: Blog[];
   setPageStatus: React.Dispatch<React.SetStateAction<BlogPageType>>;
+  setBlogData: React.Dispatch<React.SetStateAction<Blog>>;
 }
 
 const Task: React.FC<Props> = (props) => {
-  const { tasks, setPageStatus } = props;
+  const { tasks, setPageStatus, setBlogData } = props;
 
   return (
     <>
@@ -43,6 +44,7 @@ const Task: React.FC<Props> = (props) => {
           <Wrap
             onClick={() => {
               setPageStatus("read");
+              setBlogData(data);
             }}
           >
             <H2>{data.contents}</H2>
