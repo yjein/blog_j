@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { findAll, create } from "../api/blog.api";
+import Task from "../Organisms/Task";
+import Read from "../Organisms/Read";
 
-interface Blog {
-  id: string;
+const Wrap = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export type BlogPageType = "main" | "read" | "create" | "modify";
+
+export interface Blog {
   title: String;
   contents: string;
 }
 
 const App = () => {
-  const [datas, setDatas] = useState<Blog[]>([]);
+  const [tasks, setTasks] = useState<Blog[]>([]);
+  // const [blogData, setBlogData] = useState<Blog>();
+  const [pageStatus, setPageStatus] = useState<BlogPageType>("main");
   // const [loading, setLoading] = useState<Boolean>(true);
 
-  const post = async (data: Blog) => {
+  const createBlog = async (data: Blog) => {
     const blogData = {
       title: data.title,
       contents: data.contents,
@@ -21,37 +31,42 @@ const App = () => {
     create(blogData);
   };
 
+  const blogStatus = () => {
+    switch (pageStatus) {
+      // case "read":
+      //   if (!blogData) return;
+      //   return <Read data={blogData} setPageStatus={setPageStatus} />;
+
+      // case "create":
+      //   return (
+
+      //   );
+
+      case "modify":
+        return <div>수정페이지</div>;
+
+      case "main":
+      default: {
+        return <Task tasks={tasks} setPageStatus={setPageStatus} />;
+      }
+    }
+  };
+
   useEffect(() => {
     const fetchAll = async () => {
       const resp = await findAll();
 
-      setDatas(resp);
+      setTasks(resp);
     };
 
     fetchAll();
   }, []);
 
   return (
-    <div>
+    <Wrap>
       <h1>Blog</h1>
-      <form
-        onSubmit={(e) => {
-          // post();
-        }}
-      >
-        <input type="text" required={true} size={54} placeholder="Title" />
-        <textarea required={true} cols={50} rows={30}></textarea>
-        <button>Post</button>
-      </form>
-      {datas.map((data, idx) => {
-        return (
-          <li key={idx}>
-            {data.contents}
-            <div>{data.contents}</div>
-          </li>
-        );
-      })}
-    </div>
+      {blogStatus()}
+    </Wrap>
   );
 };
 
