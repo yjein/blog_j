@@ -7,7 +7,11 @@ import Create from "../Organisms/Create";
 
 const Wrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+`;
+
+const H1 = styled.h1`
+  cursor: pointer;
 `;
 
 export type BlogPageType = "main" | "read" | "create" | "modify";
@@ -46,7 +50,13 @@ const App = () => {
 
       case "main":
       default: {
-        return <Task tasks={tasks} setPageStatus={setPageStatus} setBlogData={setBlogData} />;
+        return (
+          <Task
+            tasks={tasks}
+            setPageStatus={setPageStatus}
+            setBlogData={setBlogData}
+          />
+        );
       }
     }
   };
@@ -63,7 +73,13 @@ const App = () => {
 
   return (
     <Wrap>
-      <h1>Blog</h1>
+      <H1
+        onClick={() => {
+          setPageStatus("main");
+        }}
+      >
+        JBlog
+      </H1>
       {blogStatus()}
     </Wrap>
   );
