@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { findAll, create } from "../api/blog.api";
+import { findAll, createOne } from "../api/blog.api";
 import Task from "../Organisms/Task";
 import Read from "../Organisms/Read";
 import Create from "../Organisms/Create";
@@ -34,7 +34,7 @@ const App = () => {
       contents: data.contents,
     };
 
-    create(createData);
+    createOne(createData);
   };
 
   const blogStatus = () => {

@@ -6,7 +6,7 @@ export const findAll = async () => {
   return resp;
 };
 
-export const create = async (data: {}) => {
+export const createOne = async (data: {}) => {
   await fetch('http://localhost:5000/blog', {
     method: 'post',
     headers: {
