@@ -32,20 +32,15 @@ export class BlogService {
   }
 
   create(createBlogDto: CreateBlogDto) {
-    const blog = {
-      ...createBlogDto,
-    };
-
-    return this.blogRepository.save(blog);
+    return this.blogRepository.save(createBlogDto);
   }
 
   async update(_id: string, updateBlogDto: UpdateBlogDto) {
-    const blog = this.blogRepository.findOne(_id);
-    this.deleteOne(_id);
+    const blog = {
+      title: updateBlogDto.title,
+      contents: updateBlogDto.contents,
+    };
 
-    return this.blogRepository.save({
-      ...blog,
-      ...updateBlogDto,
-    });
+    return await this.blogRepository.update(_id, blog);
   }
 }
