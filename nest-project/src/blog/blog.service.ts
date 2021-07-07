@@ -41,6 +41,7 @@ export class BlogService {
 
   async update(_id: string, updateBlogDto: UpdateBlogDto) {
     const blog = this.blogRepository.findOne(_id);
+    this.deleteOne(_id);
 
     return this.blogRepository.save({
       ...blog,
