@@ -38,13 +38,19 @@ const App = () => {
     createOne(createData);
   };
 
-  const deleteBlog = (data: Blog) => {
+  const deleteBlog = async (data: Blog) => {
+    const result = window.confirm("정말 삭제하시겠습니까?");
+
+    if (!result) return window.alert("취소 되었습니다.");
     if (!data._id) return;
+
     const deleteData = {
       ...data,
     };
 
     deleteOne(deleteData);
+
+    window.alert("삭제되었습니다.");
   };
 
   const blogStatus = () => {
