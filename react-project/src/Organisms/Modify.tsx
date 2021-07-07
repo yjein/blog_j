@@ -65,19 +65,14 @@ const Modify: React.FC<Props> = (props) => {
           updateBlog(value);
         }}
       >
-        <button
-          onClick={() => {
-            console.log(value);
-          }}
-        >
-          Submit
-        </button>
+        <button>Submit</button>
 
         <Fieldset>
           <Input
             type="text"
             required={true}
             placeholder="Title"
+            value={value.title}
             onChange={(e) => {
               setValue({ ...value, title: e.target.value });
             }}
@@ -89,6 +84,7 @@ const Modify: React.FC<Props> = (props) => {
             cols={50}
             rows={30}
             placeholder="Contents"
+            value={value.contents}
             onChange={(e) => {
               setValue({ ...value, contents: e.target.value });
             }}
