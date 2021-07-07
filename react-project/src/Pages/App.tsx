@@ -31,12 +31,7 @@ const App = () => {
   // const [loading, setLoading] = useState<Boolean>(true);
 
   const createBlog = (data: Blog) => {
-    const createData = {
-      title: data.title,
-      contents: data.contents,
-    };
-
-    createOne(createData);
+    createOne(data);
   };
 
   const deleteBlog = async (data: Blog) => {
@@ -45,11 +40,7 @@ const App = () => {
     if (!result) return window.alert("취소 되었습니다.");
     if (!data._id) return;
 
-    const deleteData = {
-      ...data,
-    };
-
-    deleteOne(deleteData);
+    deleteOne(data);
 
     window.alert("삭제되었습니다.");
   };
