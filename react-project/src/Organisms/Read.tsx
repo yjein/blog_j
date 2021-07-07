@@ -35,7 +35,14 @@ const Read: React.FC<Props> = (props) => {
 
       <Wrap>
         <div>
-          <button onClick={() => {}}>Modify</button>
+          <button
+            onClick={() => {
+              setPageStatus("modify");
+            }}
+          >
+            Modify
+          </button>
+
           <button
             onClick={() => {
               deleteBlog(data);

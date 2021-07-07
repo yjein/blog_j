@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { findAll, createOne, deleteOne } from "../api/blog.api";
+import { findAll, createOne, deleteOne, updateOne } from "../api/blog.api";
 import Task from "../Organisms/Task";
 import Read from "../Organisms/Read";
 import Create from "../Organisms/Create";
+import Modify from "../Organisms/Modify";
 
 const Wrap = styled.div`
   width: 100%;
@@ -53,6 +54,10 @@ const App = () => {
     window.alert("삭제되었습니다.");
   };
 
+  const updateBlog = (data: Blog) => {
+    updateOne(data);
+  };
+
   const blogStatus = () => {
     switch (pageStatus) {
       case "read":
@@ -69,7 +74,13 @@ const App = () => {
         return <Create setPageStatus={setPageStatus} createBlog={createBlog} />;
 
       case "modify":
-        return <div>수정페이지</div>;
+        return (
+          <Modify
+            data={blogData}
+            setPageStatus={setPageStatus}
+            updateBlog={updateBlog}
+          />
+        );
 
       case "main":
       default: {

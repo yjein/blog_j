@@ -10,16 +10,26 @@ export const findAll = async () => {
 
 export const createOne = async (data: Blog) => {
   await fetch("http://localhost:5000/blog", {
-    method: "post",
+    method: "POST",
     headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify(data),
-  });
+  }).catch((error) => console.log(error));
 };
 
 export const deleteOne = async (data: Blog) => {
   await fetch(`http://localhost:5000/blog/${data._id}`, {
-    method: "delete",
+    method: "DELETE",
+  }).catch((error) => console.log(error));
+};
+
+export const updateOne = async (data: Blog) => {
+  await fetch(`http://localhost:5000/blog/${data._id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
   }).catch((error) => console.log(error));
 };
