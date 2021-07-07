@@ -40,6 +40,7 @@ const Task: React.FC<Props> = (props) => {
       >
         Post
       </button>
+
       {tasks.map((data, idx) => {
         return (
           <Wrap

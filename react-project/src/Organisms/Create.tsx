@@ -57,15 +57,11 @@ const Create: React.FC<Props> = (props) => {
 
       <Form
         onSubmit={(e) => {
-          console.log("submt????????");
           e.preventDefault();
-
           createBlog(value);
         }}
       >
-        <button type="submit" onClick={() => console.log("submit")}>
-          Submit
-        </button>
+        <button>Submit</button>
 
         <Fieldset>
           <Input
@@ -73,7 +69,7 @@ const Create: React.FC<Props> = (props) => {
             required={true}
             placeholder="Title"
             onChange={(e) => {
-              setValue({ title: e.target.value, contents: value.contents });
+              setValue({ ...value, title: e.target.value });
             }}
           />
           <Hr />
@@ -84,7 +80,7 @@ const Create: React.FC<Props> = (props) => {
             rows={30}
             placeholder="Contents"
             onChange={(e) => {
-              setValue({ title: value.title, contents: e.target.value });
+              setValue({ ...value, contents: e.target.value });
             }}
           />
         </Fieldset>
