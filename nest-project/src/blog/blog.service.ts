@@ -36,11 +36,11 @@ export class BlogService {
   }
 
   async update(_id: string, updateBlogDto: UpdateBlogDto) {
-    const blog = {
-      title: updateBlogDto.title,
-      contents: updateBlogDto.contents,
-    };
+    const blog = await this.blogRepository.findOne(_id);
 
-    return await this.blogRepository.update(_id, blog);
+    return this.blogRepository.save({
+      ...blog,
+      ...updateBlogDto,
+    });
   }
 }
