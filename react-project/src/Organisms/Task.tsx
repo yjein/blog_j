@@ -46,8 +46,8 @@ const Task: React.FC<Props> = (props) => {
         .filter((data) => {
           if (keyword === "") return data;
           else if (
-            data.title.includes(keyword) ||
-            data.contents.includes(keyword)
+            data.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            data.contents.toLowerCase().includes(keyword.toLowerCase())
           )
             return data;
         })
