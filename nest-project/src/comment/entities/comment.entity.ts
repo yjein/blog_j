@@ -9,5 +9,5 @@ export class Comment {
   name: string;
 
   @Column()
-  contents: string;
+  comment: string;
 }
