@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Blog } from './blog/entities/blog.entity';
 import { BlogModule } from './blog/blog.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { BlogModule } from './blog/blog.module';
       useUnifiedTopology: true,
     }),
     BlogModule,
+    CommentModule,
   ],
 })
 export class AppModule {}

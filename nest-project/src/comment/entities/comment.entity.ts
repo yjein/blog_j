@@ -1,17 +1,13 @@
-import { Comment } from 'src/comment/entities/comment.entity';
 import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity()
-export class Blog {
+export class Comment {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column()
-  title: string;
+  name: string;
 
   @Column()
   contents: string;
-
-  @Column()
-  comments?: Comment;
 }
