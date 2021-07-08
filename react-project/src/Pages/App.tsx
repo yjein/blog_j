@@ -28,6 +28,7 @@ const App = () => {
   const [tasks, setTasks] = useState<Blog[]>([]);
   const [blogData, setBlogData] = useState<Blog>({ title: "", contents: "" });
   const [pageStatus, setPageStatus] = useState<BlogPageType>("main");
+  const [keyword, setKeyword] = useState("");
   // const [loading, setLoading] = useState<Boolean>(true);
 
   const createBlog = (data: Blog) => {
@@ -78,6 +79,7 @@ const App = () => {
         return (
           <Task
             tasks={tasks}
+            keyword={keyword}
             setPageStatus={setPageStatus}
             setBlogData={setBlogData}
           />
@@ -106,8 +108,11 @@ const App = () => {
         JBlog
       </H1>
 
-      <input></input>
-      <button>🔍</button>
+      <input
+        onChange={(e) => {
+          setKeyword(e.target.value);
+        }}
+      />
 
       {blogStatus()}
     </Wrap>

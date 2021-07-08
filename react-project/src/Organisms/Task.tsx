@@ -24,12 +24,13 @@ const Div = styled.div`
 
 interface Props {
   tasks: Blog[];
+  keyword: string;
   setPageStatus: React.Dispatch<React.SetStateAction<BlogPageType>>;
   setBlogData: React.Dispatch<React.SetStateAction<Blog>>;
 }
 
 const Task: React.FC<Props> = (props) => {
-  const { tasks, setPageStatus, setBlogData } = props;
+  const { tasks, keyword, setPageStatus, setBlogData } = props;
 
   return (
     <>
@@ -41,20 +42,29 @@ const Task: React.FC<Props> = (props) => {
         Post
       </button>
 
-      {tasks.map((data, idx) => {
-        return (
-          <Wrap
-            key={idx}
-            onClick={() => {
-              setPageStatus("read");
-              setBlogData(data);
-            }}
-          >
-            <H2>{data.title}</H2>
-            <Div>{data.contents}</Div>
-          </Wrap>
-        );
-      })}
+      {tasks
+        .filter((data) => {
+          if (keyword === "") return data;
+          else if (
+            data.title.includes(keyword) ||
+            data.contents.includes(keyword)
+          )
+            return data;
+        })
+        .map((data, idx) => {
+          return (
+            <Wrap
+              key={idx}
+              onClick={() => {
+                setPageStatus("read");
+                setBlogData(data);
+              }}
+            >
+              <H2>{data.title}</H2>
+              <Div>{data.contents}</Div>
+            </Wrap>
+          );
+        })}
     </>
   );
 };
