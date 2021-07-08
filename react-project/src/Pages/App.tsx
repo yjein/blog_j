@@ -109,6 +109,7 @@ const App = () => {
       </H1>
 
       <input
+        maxLength={30}
         onChange={(e) => {
           setKeyword(e.target.value);
         }}

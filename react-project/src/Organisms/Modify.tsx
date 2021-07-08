@@ -72,6 +72,7 @@ const Modify: React.FC<Props> = (props) => {
             type="text"
             required={true}
             placeholder="Title"
+            maxLength={30}
             value={value.title}
             onChange={(e) => {
               setValue({ ...value, title: e.target.value });
@@ -84,6 +85,7 @@ const Modify: React.FC<Props> = (props) => {
             cols={50}
             rows={30}
             placeholder="Contents"
+            maxLength={3000}
             value={value.contents}
             onChange={(e) => {
               setValue({ ...value, contents: e.target.value });
