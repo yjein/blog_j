@@ -90,7 +90,7 @@ const App = () => {
     const fetchAll = async () => {
       const resp = await findAll();
 
-      setTasks(resp);
+      setTasks(resp.reverse());
     };
 
     fetchAll();
@@ -105,6 +105,10 @@ const App = () => {
       >
         JBlog
       </H1>
+
+      <input></input>
+      <button>🔍</button>
+
       {blogStatus()}
     </Wrap>
   );
