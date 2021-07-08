@@ -50,6 +50,7 @@ const Task: React.FC<Props> = (props) => {
             data.contents.toLowerCase().includes(keyword.toLowerCase())
           )
             return data;
+          return false;
         })
         .map((data, idx) => {
           return (
