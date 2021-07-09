@@ -33,7 +33,7 @@ export class BlogController {
 
   @Delete(':id')
   async remove(@Param('id') _id: string) {
-    return await this.blogService.deleteOne(_id);
+    return await this.blogService.remove(_id);
   }
 
   @Patch(':id')

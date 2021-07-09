@@ -25,7 +25,7 @@ export class BlogService {
     return await this.blogRepository.find();
   }
 
-  deleteOne(_id: string) {
+  remove(_id: string) {
     this.findOne(_id);
     this.blogRepository.delete(_id);
   }
