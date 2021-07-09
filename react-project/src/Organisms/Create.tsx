@@ -77,8 +77,6 @@ const Create: React.FC<Props> = (props) => {
 
           <Textarea
             required={true}
-            cols={50}
-            rows={30}
             placeholder="Contents"
             maxLength={3000}
             onChange={(e) => {
