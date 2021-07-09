@@ -99,7 +99,7 @@ const App = () => {
     const fetchAll = async () => {
       const resp = await findAll();
 
-      setTasks(resp.reverse());
+      setTasks(resp);
       setFetch(false);
     };
 

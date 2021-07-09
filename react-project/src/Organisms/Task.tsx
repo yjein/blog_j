@@ -70,6 +70,7 @@ const Task: React.FC<Props> = (props) => {
               return data;
             return false;
           })
+          .reverse()
           .map((data, idx) => {
             return (
               <Div
