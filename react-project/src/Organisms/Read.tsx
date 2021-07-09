@@ -5,7 +5,6 @@ import { Blog, BlogPageType } from "../Pages/App";
 
 const Wrap = styled.div`
   margin: 1rem 20rem;
-  padding: 0 1rem;
   height: 100%;
   background-color: #ffffff;
   box-sizing: border-box;
