@@ -4,12 +4,9 @@ import { Blog } from './entities/blog.entity';
 import { BlogController } from './blog.controller';
 import { BlogService } from './blog.service';
 
-import { Comment } from 'src/comment/entities/comment.entity';
-import { CommentService } from 'src/comment/comment.service';
-
 @Module({
-    imports: [TypeOrmModule.forFeature([Blog, Comment])],
-  providers: [BlogService, CommentService],
+  imports: [TypeOrmModule.forFeature([Blog])],
+  providers: [BlogService],
   controllers: [BlogController],
 })
 export class BlogModule {}

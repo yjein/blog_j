@@ -1,4 +1,3 @@
-import { Comment } from 'src/comment/entities/comment.entity';
 import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity()
@@ -13,5 +12,5 @@ export class Blog {
   contents: string;
 
   @Column()
-  comments?: Comment;
+  comments?: string[];
 }
