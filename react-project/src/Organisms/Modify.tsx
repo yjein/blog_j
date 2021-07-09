@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { Blog, BlogPageType } from "../Pages/App";
 
@@ -53,11 +52,19 @@ const Modify: React.FC<Props> = (props) => {
   const { data, setPageStatus, updateBlog } = props;
   const [value, setValue] = useState<Blog>(data);
 
-  useEffect(() => {}, []);
+  const HandleonClick = () => {
+    if (value.title === data.title && value.contents === data.contents)
+      return setPageStatus("read");
+
+    const result = window.confirm(
+      "변경사항이 저장되지 않았습니다. 입력을 취소하시겠습니까?"
+    );
+    if (result) return setPageStatus("read");
+  };
 
   return (
     <>
-      <button onClick={() => setPageStatus("main")}>Back</button>
+      <button onClick={HandleonClick}>Back</button>
 
       <Form
         onSubmit={(e) => {
