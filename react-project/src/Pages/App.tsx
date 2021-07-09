@@ -31,10 +31,12 @@ const App = () => {
   const [blogData, setBlogData] = useState<Blog>({ title: "", contents: "" });
   const [pageStatus, setPageStatus] = useState<BlogPageType>("main");
   const [keyword, setKeyword] = useState("");
-  // const [loading, setLoading] = useState<Boolean>(true);
+  const [fetch, setFetch] = useState<Boolean>(false);
 
   const createBlog = (data: Blog) => {
     createOne(data);
+    setFetch(true);
+    setPageStatus("main");
   };
 
   const deleteBlog = async (data: Blog) => {
@@ -50,6 +52,8 @@ const App = () => {
 
   const updateBlog = (data: Blog) => {
     updateOne(data);
+    setFetch(true);
+    setPageStatus("read");
   };
 
   const blogStatus = () => {
@@ -72,6 +76,7 @@ const App = () => {
           <Modify
             data={blogData}
             setPageStatus={setPageStatus}
+            setBlogData={setBlogData}
             updateBlog={updateBlog}
           />
         );
@@ -95,10 +100,11 @@ const App = () => {
       const resp = await findAll();
 
       setTasks(resp.reverse());
+      setFetch(false);
     };
 
     fetchAll();
-  }, []);
+  }, [fetch]);
 
   return (
     <Wrap>

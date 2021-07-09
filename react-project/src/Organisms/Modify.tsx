@@ -46,10 +46,11 @@ interface Props {
   data: Blog;
   setPageStatus: React.Dispatch<React.SetStateAction<BlogPageType>>;
   updateBlog: (data: Blog) => void;
+  setBlogData: React.Dispatch<React.SetStateAction<Blog>>;
 }
 
 const Modify: React.FC<Props> = (props) => {
-  const { data, setPageStatus, updateBlog } = props;
+  const { data, setPageStatus, updateBlog, setBlogData } = props;
   const [value, setValue] = useState<Blog>(data);
 
   const HandleonClick = () => {
@@ -70,6 +71,7 @@ const Modify: React.FC<Props> = (props) => {
         onSubmit={(e) => {
           e.preventDefault();
           updateBlog(value);
+          setBlogData(value);
         }}
       >
         <button>Submit</button>
