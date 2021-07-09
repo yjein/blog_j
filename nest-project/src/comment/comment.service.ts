@@ -27,7 +27,7 @@ export class CommentService {
   async update(_id: string, updateCommentDto: UpdateCommentDto) {
     const comment = {
       name: updateCommentDto.name,
-      contents: updateCommentDto.contents,
+      comment: updateCommentDto.comment,
     };
 
     return await this.commentRepository.update(_id, comment);
