@@ -1,23 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import { Blog, BlogPageType } from "../Pages/App";
+// import Comment from "./Comment";
 
 const Wrap = styled.div`
-  margin: 1rem 5rem;
+  margin: 1rem 20rem;
+  padding: 0 1rem;
+  height: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box;
+`;
+
+const Div = styled.div`
   padding: 1rem;
-  height: 70vh;
+  height: 70%;
   background-color: #ffffff;
 `;
 
 const H1 = styled.h1`
   margin: 0 0 2.5rem;
+  min-height: 5.25rem;
   font-size: 4rem;
+  word-break: break-all;
 `;
 
-const Div = styled.div`
-  margin: 0.5rem;
-  list-style: none;
+const Span = styled.span`
   font-size: 1.25rem;
+  word-break: break-all;
+  white-space: break-spaces;
 `;
 
 interface Props {
@@ -30,10 +40,10 @@ const Read: React.FC<Props> = (props) => {
   const { data, setPageStatus, deleteBlog } = props;
 
   return (
-    <>
+    <Wrap>
       <button onClick={() => setPageStatus("main")}>Back</button>
 
-      <Wrap>
+      <Div>
         <div>
           <button
             onClick={() => {
@@ -53,9 +63,11 @@ const Read: React.FC<Props> = (props) => {
         </div>
 
         <H1>{data.title}</H1>
-        <Div>{data.contents}</Div>
-      </Wrap>
-    </>
+        <Span>{data.contents}</Span>
+      </Div>
+
+      {/* <Comment /> */}
+    </Wrap>
   );
 };
 

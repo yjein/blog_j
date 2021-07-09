@@ -7,8 +7,10 @@ import Create from "../Organisms/Create";
 import Modify from "../Organisms/Modify";
 
 const Wrap = styled.div`
-  width: 100%;
-  height: 100%;
+  padding: 2rem;
+  min-width: fit-content;
+  min-height: 100%;
+  box-sizing: border-box;
   background-color: #f9f9f9;
 `;
 
