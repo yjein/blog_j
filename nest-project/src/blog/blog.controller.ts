@@ -16,6 +16,11 @@ import { Blog } from './entities/blog.entity';
 export class BlogController {
   constructor(readonly blogService: BlogService) {}
 
+  @Post()
+  create(@Body() createBlogDto: CreateBlogDto) {
+    return this.blogService.create(createBlogDto);
+  }
+
   @Get()
   findAll(): Promise<Blog[]> {
     return this.blogService.findAll();
@@ -26,18 +31,13 @@ export class BlogController {
     return this.blogService.findOne(_id);
   }
 
-  @Post()
-  create(@Body() createBlogDto: CreateBlogDto) {
-    return this.blogService.create(createBlogDto);
+  @Patch(':id')
+  async update(@Param('id') _id: string, @Body() updateBlogDto: UpdateBlogDto) {
+    return await this.blogService.update(_id, updateBlogDto);
   }
 
   @Delete(':id')
   async remove(@Param('id') _id: string) {
     return await this.blogService.remove(_id);
-  }
-
-  @Patch(':id')
-  async patch(@Param('id') _id: string, @Body() updateBlogDto: UpdateBlogDto) {
-    return await this.blogService.update(_id, updateBlogDto);
   }
 }

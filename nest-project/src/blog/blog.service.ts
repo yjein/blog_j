@@ -12,6 +12,14 @@ export class BlogService {
     private readonly blogRepository: Repository<Blog>,
   ) {}
 
+  create(createBlogDto: CreateBlogDto) {
+    return this.blogRepository.save(createBlogDto);
+  }
+
+  async findAll(): Promise<Blog[]> {
+    return await this.blogRepository.find();
+  }
+
   async findOne(_id: string): Promise<Blog> {
     const blog = await this.blogRepository.findOne(_id);
     if (!blog) {
@@ -21,19 +29,6 @@ export class BlogService {
     return blog;
   }
 
-  async findAll(): Promise<Blog[]> {
-    return await this.blogRepository.find();
-  }
-
-  remove(_id: string) {
-    this.findOne(_id);
-    this.blogRepository.delete(_id);
-  }
-
-  create(createBlogDto: CreateBlogDto) {
-    return this.blogRepository.save(createBlogDto);
-  }
-
   async update(_id: string, updateBlogDto: UpdateBlogDto) {
     const blog = {
       title: updateBlogDto.title,
@@ -41,5 +36,10 @@ export class BlogService {
     };
 
     return await this.blogRepository.update(_id, blog);
+  }
+
+  remove(_id: string) {
+    this.findOne(_id);
+    this.blogRepository.delete(_id);
   }
 }
