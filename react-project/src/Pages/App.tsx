@@ -116,12 +116,14 @@ const App = () => {
         JBlog
       </H1>
 
-      <input
-        maxLength={30}
-        onChange={(e) => {
-          setKeyword(e.target.value);
-        }}
-      />
+      {pageStatus === "main" && (
+        <input
+          maxLength={30}
+          onChange={(e) => {
+            setKeyword(e.target.value);
+          }}
+        />
+      )}
 
       {blogStatus()}
     </Wrap>
